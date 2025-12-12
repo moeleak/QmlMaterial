@@ -1,7 +1,7 @@
 {
   description = "QmlMaterial Development Environment";
-
   inputs = {
+    self.lfs = true;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
@@ -30,20 +30,10 @@
             pname = "QmlMaterial";
             version = "0.1.4";
 
-            # When running from a GitHub flake, the default tarball source does not
-            # include Git LFS objects (fonts/images). Re-fetch with LFS enabled so
-            # `nix run github:...` has real assets.
-            rawSrc =
-              if (self.sourceInfo.type or "") == "github" then
-                builtins.fetchGit {
-                  url =
-                    "https://github.com/${self.sourceInfo.owner}/${self.sourceInfo.repo}.git";
-                  rev = self.sourceInfo.rev;
-                  submodules = true;
-                  lfs = true;
-                }
-              else
-                ./.;
+            # `nix run github:...` uses a GitHub source tarball, which does not
+            # include Git LFS objects (fonts/images). Re-fetch via git with LFS
+            # enabled so assets are available at build time.
+            rawSrc = ./.;
 
             # Drop Nix-specific files under example; keep shared QML/CMake sources.
             src = pkgs.lib.cleanSourceWith {
@@ -55,9 +45,7 @@
                   rel = pkgs.lib.removePrefix srcPrefix (toString path);
                 in
                 !(
-                  rel == "example/flake.nix"
-                  || rel == "example/flake.lock"
-                  || pkgs.lib.hasPrefix "example/build" rel
+                  rel == "example/flake.nix" || rel == "example/flake.lock" || pkgs.lib.hasPrefix "example/build" rel
                 );
             };
 
@@ -160,20 +148,6 @@
             ];
 
             CMAKE_EXPORT_COMPILE_COMMANDS = "1";
-          };
-        }
-      );
-
-      # 3. "nix run"
-      apps = forAllSystems (
-        system:
-        let
-          pkg = self.packages.${system}.default;
-        in
-        {
-          default = {
-            type = "app";
-            program = "${pkg}/bin/qm_example";
           };
         }
       );
