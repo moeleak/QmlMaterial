@@ -1,8 +1,8 @@
-import QtQuick
+import QtQuick as Q
 import QtQuick.Window
 import Qcm.Material as MD
 
-Text {
+Q.Text {
     id: root
     property MD.typescale typescale: MD.Token.typescale.label_medium
     property bool prominent: false
@@ -14,8 +14,8 @@ Text {
 
     antialiasing: true
     color: MD.MProp.textColor
-    lineHeightMode: Text.FixedHeight
-    wrapMode: Text.Wrap
-    elide: Text.ElideRight
-    textFormat: Text.PlainText
+    lineHeightMode: Q.Text.FixedHeight
+    wrapMode: Q.Text.Wrap
+    elide: Q.Text.ElideRight
+    textFormat: Q.Text.PlainText
 }

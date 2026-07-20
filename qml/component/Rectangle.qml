@@ -1,7 +1,7 @@
-import QtQuick
+import QtQuick as Q
 import Qcm.Material as MD
 
-Rectangle {
+Q.Rectangle {
     property MD.corners corners: radius
 
     bottomLeftRadius: corners.bottomLeft

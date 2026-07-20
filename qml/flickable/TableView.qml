@@ -1,7 +1,7 @@
-import QtQuick
+import QtQuick as Q
 import Qcm.Material as MD
 
-TableView {
+Q.TableView {
     id: control
 
     property int radius: MD.Token.shape.corner.extra_large
@@ -43,9 +43,9 @@ TableView {
     pressDelay: MD.Token.flick.pressDelay
     maximumFlickVelocity: MD.Token.flick.maximumFlickVelocity
     flickDeceleration: MD.Token.flick.flickDeceleration
-    boundsBehavior: Flickable.StopAtBounds
-    boundsMovement: Flickable.StopAtBounds
-    rebound: Transition {}
+    boundsBehavior: Q.Flickable.StopAtBounds
+    boundsMovement: Q.Flickable.StopAtBounds
+    rebound: Q.Transition {}
 
     leftMargin: 0
     rightMargin: 0
@@ -55,8 +55,8 @@ TableView {
     onCellHovered: function (row, column) {
         lastHoveredRow = row;
     }
-    selectionBehavior: TableView.SelectRows
-    HoverHandler {
+    selectionBehavior: Q.TableView.SelectRows
+    Q.HoverHandler {
         id: m_hover
     }
 

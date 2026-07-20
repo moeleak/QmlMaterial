@@ -1,8 +1,8 @@
-import QtQuick
+import QtQuick as Q
 
 import Qcm.Material as MD
 
-Flickable {
+Q.Flickable {
     id: root
 
     // it's hard to avoid item around Flickable is not transparent
@@ -12,9 +12,9 @@ Flickable {
     pressDelay: MD.Token.flick.pressDelay
     maximumFlickVelocity: MD.Token.flick.maximumFlickVelocity
     flickDeceleration: MD.Token.flick.flickDeceleration
-    boundsBehavior: Flickable.StopAtBounds
-    boundsMovement: Flickable.StopAtBounds
-    rebound: Transition {}
+    boundsBehavior: Q.Flickable.StopAtBounds
+    boundsMovement: Q.Flickable.StopAtBounds
+    rebound: Q.Transition {}
 
     leftMargin: 0
     rightMargin: 0

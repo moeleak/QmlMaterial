@@ -1,6 +1,6 @@
-import QtQuick.Shapes
+import QtQuick.Shapes as Q
 
-Shape {
+Q.Shape {
     asynchronous: false
-    preferredRendererType: Shape.CurveRenderer
+    preferredRendererType: Q.Shape.CurveRenderer
 }

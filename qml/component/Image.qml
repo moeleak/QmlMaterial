@@ -1,7 +1,7 @@
-import QtQuick
+import QtQuick as Q
 import Qcm.Material as MD
 
-Item {
+Q.Item {
     id: root
     property int radius: 0
     property alias inner: m_image
@@ -41,17 +41,17 @@ Item {
         anchors.fill: parent
         elevation: root.elevation
         corners: root.corners
-        opacity: root.status === Image.Ready && root.paintedHeight > 0 ? 1 : 0
+        opacity: root.status === Q.Image.Ready && root.paintedHeight > 0 ? 1 : 0
 
     }
 
-    Image {
+    Q.Image {
         id: m_image
         anchors.fill: parent
         retainWhileLoading: true
         cache: true
         smooth: true
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Q.Image.PreserveAspectCrop
         layer.enabled: true
         layer.effect: MD.RoundClip {
             corners: root.corners

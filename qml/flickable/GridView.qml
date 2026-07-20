@@ -1,7 +1,7 @@
-import QtQuick
+import QtQuick as Q
 import Qcm.Material as MD
 
-GridView {
+Q.GridView {
     id: root
 
     clip: true
@@ -11,7 +11,7 @@ GridView {
     pressDelay: MD.Token.flick.pressDelay
     maximumFlickVelocity: MD.Token.flick.maximumFlickVelocity
     flickDeceleration: MD.Token.flick.flickDeceleration
-    boundsBehavior: Flickable.StopAtBounds
-    boundsMovement: Flickable.StopAtBounds
-    rebound: Transition {}
+    boundsBehavior: Q.Flickable.StopAtBounds
+    boundsMovement: Q.Flickable.StopAtBounds
+    rebound: Q.Transition {}
 }
